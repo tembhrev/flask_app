@@ -30,7 +30,7 @@ class Item(Resource):
             return {'message': "An item with '{}' already exists.".format(name)}, 400
         data = Item.parser.parse_args()
 
-        item = ItemModel(name, data['price'], data['store_id'])
+        item = ItemModel(name, **data)
 
         try:
             item.save_to_db()
